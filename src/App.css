@@ -1,14 +1,14 @@
 /*--------------------------------------------global---------------------------------------------------------------*/
 
 #root{
-
+  min-height: 100vh;
 }
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: sans-serif;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 main{
@@ -17,6 +17,7 @@ main{
 body{
     font-size: 100%;
     min-height: 100vh;
+    background-color: #f8f9fa;
 }
 
 /*--------------------------------------------sidebar---------------------------------------------------------------*/
@@ -33,8 +34,16 @@ body{
 	width: 60px;
 	height: 60px;
 	border-radius: 99px;
-	background-color: #2e3047;
+	background-color: #0d6efd;
 	cursor: pointer;
+	z-index: 1050;
+	box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+	transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+	background-color: #0b5ed7;
+	transform: scale(1.05);
 }
 
 .hamburger {
@@ -80,65 +89,63 @@ body{
 .sidebar {
 	flex: 1 1 0;
 	max-width: 300px;
-	padding: 2rem 1rem;
-	background-color: #2e3047;
-    overflow-y: scroll;
-}
-
-.sidebar h3 {
-	color: #707793;
-	font-size: 0.75rem;
-	text-transform: uppercase;
-	margin-bottom: 0.5em;
-}
-
-.sidebar .menu {
-	margin: 0 -1rem;
+	padding: 0;
+	background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
 }
 
 .sidebar .menu .menu-item {
 	display: block;
-	padding: 1em;
+	padding: 1rem 1.5rem;
 	color: #FFF;
 	text-decoration: none;
-	transition: 0.2s linear;
+	transition: all 0.3s ease;
+	border-radius: 0.5rem;
+	margin: 0.25rem 1rem;
 }
 
 .sidebar .menu .menu-item:hover,
 .sidebar .menu .menu-item.is-active {
-	color: #3bba9c;
-	border-right: 5px solid #3bba9c;
+	color: #FFF;
+	background-color: rgba(255,255,255,0.1);
+	transform: translateX(5px);
 }
 
 .sidebar .menu .menu-item:hover {
-	border-right: 5px solid #3bba9c;
+	background-color: rgba(255,255,255,0.15);
 }
 
 .content {
 	flex: 1 1 0;
-	padding: 2rem;
-    margin-left: 200px; /* Ajusta el margen izquierdo para dar espacio al sidebar */
-  overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
-  
+	padding: 0;
+    margin-left: 0;
+    overflow-y: auto;
 }
 
 .content h1 {
-	color: #3C3F58;
+	color: #212529;
 	font-size: 2.5rem;
 	margin-bottom: 1rem;
 }
 
 .content p {
-	color: #707793;
+	color: #6c757d;
 }
 
 @media (min-width: 769px) {
 	.sidebar {
-    width: 200px;
-    max-width: 200px;
+    width: 280px;
+    max-width: 280px;
     height: 100vh;
     max-height: 100vh;
     position: fixed;
+    left: 0;
+    top: 0;
+	}
+	
+	.content {
+		margin-left: 280px;
 	}
 }
 
@@ -147,8 +154,8 @@ body{
 		display: block;
 	}
 	.content {
-		padding-top: 7rem;
-        margin-left: auto; /* Ajusta el margen izquierdo para dar espacio al sidebar */
+		padding-top: 0;
+        margin-left: 0;
 	}
 	.sidebar {
 		position: fixed;
@@ -156,8 +163,9 @@ body{
 		left: -300px;
 		height: 100vh;
 		width: 100%;
-		max-width: 200px;
-		transition: 0.2s linear;
+		max-width: 280px;
+		transition: 0.3s ease;
+		z-index: 1040;
 	}
 
 	.sidebar.is-active {
@@ -165,27 +173,123 @@ body{
 	}
 
     .home, .about, .projects, .contact{
-      
-        padding-top: 7rem;
+        padding-top: 2rem;
     }
 }
 
 /*--------------------------------------------home---------------------------------------------------------------*/
 
-.home, .about, .projects, .contact{
-    min-height: 100vh;
-    background-color: rgba(255, 0, 0, 0.082);
+.home {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
 }
 
-
-
+.home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%230d6efd" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    pointer-events: none;
+}
 
 /*--------------------------------------------about---------------------------------------------------------------*/
 
+.about {
+    background-color: #ffffff;
+}
 
+.skill-item .progress {
+    background-color: #e9ecef;
+    border-radius: 10px;
+}
+
+.skill-item .progress-bar {
+    border-radius: 10px;
+    background: linear-gradient(90deg, #0d6efd 0%, #0b5ed7 100%);
+}
 
 /*--------------------------------------------projects---------------------------------------------------------------*/
 
+.projects {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
 
+.projects .card {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+}
+
+.projects .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+}
+
+.projects .badge {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.75rem;
+}
 
 /*--------------------------------------------contact---------------------------------------------------------------*/
+
+.contact {
+    background-color: #ffffff;
+}
+
+.contact .form-control {
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.contact .form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.contact .btn {
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.contact .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Animaciones adicionales */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.home, .about, .projects, .contact {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+/* Mejoras para el scroll */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0d6efd;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0b5ed7;
+}
