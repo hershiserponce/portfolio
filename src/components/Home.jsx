@@ -7,7 +7,7 @@ export const Home = () => {
           <div className="col-lg-6">
             <div className="hero-content">
               <h1 className="display-4 fw-bold text-dark mb-4">
-                ¡Hola! Soy <span className="text-primary">Tu Nombre</span>
+                ¡Hola! Soy <span className="text-primary">Hershiser Ponce</span>
               </h1>
               <h2 className="h3 text-muted mb-4">
                 Desarrollador Full Stack & Diseñador UX/UI

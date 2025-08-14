@@ -152,7 +152,30 @@ body{
 @media (max-width: 768px) {
 	.menu-toggle {
 		display: block;
+		width: 30px;
+		height: 30px;
+		top: 1rem;
+		right: 1rem;
 	}
+	
+	.menu-toggle .hamburger {
+		width: 16px;
+	}
+	
+	.menu-toggle .hamburger > span,
+	.menu-toggle .hamburger > span::before,
+	.menu-toggle .hamburger > span::after {
+		height: 2px;
+	}
+	
+	.menu-toggle .hamburger > span::before {
+		top: -4px;
+	}
+	
+	.menu-toggle .hamburger > span::after {
+		top: 4px;
+	}
+	
 	.content {
 		padding-top: 0;
         margin-left: 0;
